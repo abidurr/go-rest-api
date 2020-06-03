@@ -6,7 +6,6 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
-
 	"github.com/gorilla/mux"
 )
 
@@ -17,7 +16,6 @@ type Book struct {
 	Title  string  `json:"title"`
 	Author *Author `json:"author"`
 }
-
 type Author struct {
 	FirstName string `json:"firstname"`
 	LastName  string `json:"lastname"`
@@ -66,7 +64,7 @@ func updateBook(w http.ResponseWriter, r *http.Request) {
 	for index, item := range books {
 		if item.ID == params["id"] {
 			books = append(books[:index], books[index+1:]...)
-			
+
 			var book Book
 			_ = json.NewDecoder(r.Body).Decode(&book)
 			book.ID = params["id"]
@@ -92,7 +90,6 @@ func deleteBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
 	// Initialize router as r
 	r := mux.NewRouter()
 
@@ -108,7 +105,6 @@ func main() {
 	r.HandleFunc("/api/books/{id}", deleteBook).Methods("DELETE")
 
 	log.Fatal(http.ListenAndServe(":3000", r))
-
 }
 
 // go build && ./go-rest-api
