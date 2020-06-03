@@ -23,10 +23,36 @@ type Author struct {
 	LastName string `json:"lastname"`
 }
 
+// Get all books
+func getBooks(w http.ResponseWriter, r *http.Request) {
+
+}
+
+// Get single book
+func getBook(w http.ResponseWriter, r *http.Request) {
+	
+}
+
+// Create new book
+func createBook(w http.ResponseWriter, r *http.Request) {
+	
+}
+
+// Update book
+func updateBook(w http.ResponseWriter, r *http.Request) {
+	
+}
+
+// Delete book
+func deleteBook(w http.ResponseWriter, r *http.Request) {
+	
+}
+
+
 func main() {
 
 	// Initialize router as r
-	router := mux.NewRouter()
+	r := mux.NewRouter()
 
 	// Endpoints
 	r.HandleFunc("/api/books", getBooks).Methods("GET")
@@ -35,6 +61,6 @@ func main() {
 	r.HandleFunc("/api/books/{id}", updateBook).Methods("PUT")
 	r.HandleFunc("/api/books/{id}", deleteBook).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":3000", router))
+	log.Fatal(http.ListenAndServe(":3000", r))
 
 }
