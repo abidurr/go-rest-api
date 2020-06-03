@@ -9,6 +9,20 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Book struct
+type Book struct {
+	ID string `json:"id"`
+	ISBN string `json:"isbn"`
+	Title string `json:"title"`
+	Author *Author `json:"author"`
+
+}
+
+type Author struct {
+	FirstName string `json:"firstname"`
+	LastName string `json:"lastname"`
+}
+
 func main() {
 
 	// Initialize router as r
