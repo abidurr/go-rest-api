@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"math/rand"
-	"strconv"
+	//"math/rand"
+	//"strconv"
 	"github.com/gorilla/mux"
 )
 
@@ -28,7 +28,8 @@ var books []Book
 
 // Get all books
 func getBooks(w http.ResponseWriter, r *http.Request) {
-
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(books)
 }
 
 // Get single book
@@ -71,3 +72,5 @@ func main() {
 	log.Fatal(http.ListenAndServe(":3000", r))
 
 }
+
+// go build && ./go-rest-api
