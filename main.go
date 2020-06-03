@@ -23,6 +23,9 @@ type Author struct {
 	LastName string `json:"lastname"`
 }
 
+// Initialize books variable as a slice Book struct
+var books []Book
+
 // Get all books
 func getBooks(w http.ResponseWriter, r *http.Request) {
 
@@ -53,6 +56,10 @@ func main() {
 
 	// Initialize router as r
 	r := mux.NewRouter()
+
+	// Mock data
+	books = append(books, Book{ID: "1", ISBN: "456654654", Title: "End of Race War", Author: &Author {FirstName: "Mr.", LastName: "Man"}})
+	books = append(books, Book{ID: "2", ISBN: "656788654", Title: "World Peace", Author: &Author {FirstName: "John", LastName: "Titor"}})
 
 	// Endpoints
 	r.HandleFunc("/api/books", getBooks).Methods("GET")
